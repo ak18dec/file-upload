@@ -12,16 +12,16 @@ public class FileService {
     @Autowired
     FileRepository fileRepository;
 
-    public int uploadFile(String fileName, byte[] fileData, String fileType) {
+    public int uploadFile(MediaFile file) {
 //        Files.copy()
         return -1;
     }
 
-    private int uploadToDB(String fileName, byte[] fileData, String fileType) {
+    private int uploadToDB(String name, byte[] data, String type) {
         MediaFile file = new MediaFile();
-        file.setFileName(fileName);
-        file.setFileType(fileType);
-        file.setData(fileData);
+        file.setName(name);
+        file.setType(type);
+        file.setData(data);
         return fileRepository.addFile(file);
     }
 }

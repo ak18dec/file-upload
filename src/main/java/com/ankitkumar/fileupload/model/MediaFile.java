@@ -4,17 +4,17 @@ import java.util.Arrays;
 
 public class MediaFile {
     private int id;
-    private String fileName;
-    private String fileType;
+    private String name;
+    private String type;
     private byte[] data;
 
     public MediaFile() {
     }
 
-    public MediaFile(int id, String fileName, String fileType, byte[] data) {
+    public MediaFile(int id, String name, String type, byte[] data) {
         this.id = id;
-        this.fileName = fileName;
-        this.fileType = fileType;
+        this.name = name;
+        this.type = type;
         this.data = data;
     }
 
@@ -26,20 +26,20 @@ public class MediaFile {
         this.id = id;
     }
 
-    public String getFileName() {
-        return fileName;
+    public String getName() {
+        return name;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getFileType() {
-        return fileType;
+    public String getType() {
+        return type;
     }
 
-    public void setFileType(String fileType) {
-        this.fileType = fileType;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public byte[] getData() {
@@ -54,8 +54,8 @@ public class MediaFile {
     public String toString() {
         return "MediaFile{" +
                 "id=" + id +
-                ", fileName='" + fileName + '\'' +
-                ", fileType='" + fileType + '\'' +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
                 ", data=" + Arrays.toString(data) +
                 '}';
     }

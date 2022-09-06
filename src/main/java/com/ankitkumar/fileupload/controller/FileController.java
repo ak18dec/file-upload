@@ -1,11 +1,13 @@
 package com.ankitkumar.fileupload.controller;
 
+import com.ankitkumar.fileupload.adapter.FileAdapter;
 import com.ankitkumar.fileupload.constant.FileConstants;
 import com.ankitkumar.fileupload.exception.FileSizeExceedsLimitException;
 import com.ankitkumar.fileupload.exception.FileTypeNotSupportedException;
 import com.ankitkumar.fileupload.exception.MaliciousFileException;
 import com.ankitkumar.fileupload.helper.FileHelper;
 import com.ankitkumar.fileupload.model.FileResponseEntity;
+import com.ankitkumar.fileupload.model.MediaFile;
 import com.ankitkumar.fileupload.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,7 +41,9 @@ public class FileController {
 
         if(safeFile){
             try{
-                uploadedFileId = fileService.uploadFile(file.getOriginalFilename(), file.getBytes(), file.getContentType());
+
+                MediaFile mediaFile = FileAdapter.convertToMediaFile(file);
+                uploadedFileId = fileService.uploadFile(mediaFile);
             }catch(IOException ioe){
                 ioe.printStackTrace();
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ioe.getMessage());

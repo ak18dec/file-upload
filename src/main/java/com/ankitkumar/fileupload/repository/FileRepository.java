@@ -4,9 +4,7 @@ import com.ankitkumar.fileupload.model.MediaFile;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class FileRepository {
+public interface FileRepository {
 
-    public int addFile(MediaFile file) {
-        return -1;
-    }
+    public int addFile(MediaFile file);
 }
